@@ -1,4 +1,3 @@
-import { StarIcon } from "lucide-react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent } from "../ui/dialog";
@@ -12,6 +11,7 @@ import { Label } from "../ui/label";
 import StarRatingComponent from "../common/star-rating";
 import { useEffect, useState } from "react";
 import { addReview, getReviews } from "@/store/shop/review-slice";
+import PropTypes from "prop-types";
 
 function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const [reviewMsg, setReviewMsg] = useState("");
@@ -129,11 +129,11 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                 productDetails?.salePrice > 0 ? "line-through" : ""
               }`}
             >
-              ${productDetails?.price}
+              ₹{productDetails?.price}
             </p>
             {productDetails?.salePrice > 0 ? (
               <p className="text-2xl font-bold text-muted-foreground">
-                ${productDetails?.salePrice}
+                ₹{productDetails?.salePrice}
               </p>
             ) : null}
           </div>
@@ -170,6 +170,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             <div className="grid gap-6">
               {reviews && reviews.length > 0 ? (
                 reviews.map((reviewItem) => (
+                  // eslint-disable-next-line react/jsx-key
                   <div className="flex gap-4">
                     <Avatar className="w-10 h-10 border">
                       <AvatarFallback>
@@ -220,5 +221,19 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     </Dialog>
   );
 }
+ProductDetailsDialog.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  productDetails: PropTypes.shape({
+    _id: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    salePrice: PropTypes.number,
+    totalStock: PropTypes.number,
+  }),
+};
 
 export default ProductDetailsDialog;
+

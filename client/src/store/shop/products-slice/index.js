@@ -48,6 +48,7 @@ const shoppingProductSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    // eslint-disable-next-line no-unused-vars
       .addCase(fetchAllFilteredProducts.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -55,10 +56,12 @@ const shoppingProductSlice = createSlice({
         state.isLoading = false;
         state.productList = action.payload.data;
       })
+      // eslint-disable-next-line no-unused-vars
       .addCase(fetchAllFilteredProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.productList = [];
       })
+        // eslint-disable-next-line no-unused-vars
       .addCase(fetchProductDetails.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -66,6 +69,7 @@ const shoppingProductSlice = createSlice({
         state.isLoading = false;
         state.productDetails = action.payload.data;
       })
+      // eslint-disable-next-line no-unused-vars
       .addCase(fetchProductDetails.rejected, (state, action) => {
         state.isLoading = false;
         state.productDetails = null;

@@ -29,6 +29,7 @@ const adminSidebarMenuItems = [
   },
 ];
 
+// eslint-disable-next-line react/prop-types
 function MenuItems({ setOpen }) {
   const navigate = useNavigate();
 
@@ -51,6 +52,7 @@ function MenuItems({ setOpen }) {
   );
 }
 
+// eslint-disable-next-line react/prop-types
 function AdminSideBar({ open, setOpen }) {
   const navigate = useNavigate();
 

@@ -11,6 +11,7 @@ import {
   updateOrderStatus,
 } from "@/store/admin/order-slice";
 import { useToast } from "../ui/use-toast";
+import PropTypes from "prop-types";
 
 const initialFormData = {
   status: "",
@@ -56,7 +57,7 @@ function AdminOrderDetailsView({ orderDetails }) {
           </div>
           <div className="flex mt-2 items-center justify-between">
             <p className="font-medium">Order Price</p>
-            <Label>${orderDetails?.totalAmount}</Label>
+            <Label>₹{orderDetails?.totalAmount}</Label>
           </div>
           <div className="flex mt-2 items-center justify-between">
             <p className="font-medium">Payment method</p>
@@ -90,10 +91,11 @@ function AdminOrderDetailsView({ orderDetails }) {
             <ul className="grid gap-3">
               {orderDetails?.cartItems && orderDetails?.cartItems.length > 0
                 ? orderDetails?.cartItems.map((item) => (
+                    // eslint-disable-next-line react/jsx-key
                     <li className="flex items-center justify-between">
                       <span>Title: {item.title}</span>
                       <span>Quantity: {item.quantity}</span>
-                      <span>Price: ${item.price}</span>
+                      <span>Price: ₹{item.price}</span>
                     </li>
                   ))
                 : null}
@@ -140,5 +142,30 @@ function AdminOrderDetailsView({ orderDetails }) {
     </DialogContent>
   );
 }
+AdminOrderDetailsView.propTypes = {
+  orderDetails: PropTypes.shape({
+    _id: PropTypes.string,
+    orderDate: PropTypes.string,
+    totalAmount: PropTypes.number,
+    paymentMethod: PropTypes.string,
+    paymentStatus: PropTypes.string,
+    orderStatus: PropTypes.string,
+    cartItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        quantity: PropTypes.number,
+        price: PropTypes.number,
+      })
+    ),
+    addressInfo: PropTypes.shape({
+      address: PropTypes.string,
+      city: PropTypes.string,
+      pincode: PropTypes.string,
+      phone: PropTypes.string,
+      notes: PropTypes.string,
+    }),
+  }),
+};
 
 export default AdminOrderDetailsView;
+

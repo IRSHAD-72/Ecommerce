@@ -75,7 +75,8 @@ const AdminProductsSlice = createSlice({
         state.isLoading = false;
         state.productList = action.payload.data;
       })
-      .addCase(fetchAllProducts.rejected, (state, action) => {
+      // eslint-disable-next-line no-unused-vars
+      .addCase(fetchAllProducts.rejected, (state, _action) => {
         state.isLoading = false;
         state.productList = [];
       });

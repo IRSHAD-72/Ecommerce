@@ -9,6 +9,7 @@ import {
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
+import PropTypes from "prop-types";
 
 function CommonForm({
   formControls,
@@ -124,5 +125,14 @@ function CommonForm({
     </form>
   );
 }
+
+CommonForm.propTypes = {
+  formControls: PropTypes.array.isRequired,
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  buttonText: PropTypes.string,
+  isBtnDisabled: PropTypes.bool,
+};
 
 export default CommonForm;

@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter } from "../ui/card";
 import { Button } from "../ui/button";
 import { brandOptionsMap, categoryOptionsMap } from "@/config";
 import { Badge } from "../ui/badge";
+import PropTypes from "prop-types";
 
 function ShoppingProductTile({
   product,
@@ -47,11 +48,11 @@ function ShoppingProductTile({
                 product?.salePrice > 0 ? "line-through" : ""
               } text-lg font-semibold text-primary`}
             >
-              ${product?.price}
+              ₹{product?.price}
             </span>
             {product?.salePrice > 0 ? (
               <span className="text-lg font-semibold text-primary">
-                ${product?.salePrice}
+                ₹{product?.salePrice}
               </span>
             ) : null}
           </div>
@@ -74,5 +75,10 @@ function ShoppingProductTile({
     </Card>
   );
 }
+ShoppingProductTile.propTypes = {
+  product: PropTypes.object.isRequired,
+  handleGetProductDetails: PropTypes.func.isRequired,
+  handleAddtoCart: PropTypes.func.isRequired,
+};
 
 export default ShoppingProductTile;

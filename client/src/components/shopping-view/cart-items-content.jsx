@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCartItem, updateCartQuantity } from "@/store/shop/cart-slice";
 import { useToast } from "../ui/use-toast";
+import PropTypes from "prop-types";
 
 function UserCartItemsContent({ cartItem }) {
   const { user } = useSelector((state) => state.auth);
@@ -91,6 +92,8 @@ function UserCartItemsContent({ cartItem }) {
             <Minus className="w-4 h-4" />
             <span className="sr-only">Decrease</span>
           </Button>
+
+        
           <span className="font-semibold">{cartItem?.quantity}</span>
           <Button
             variant="outline"
@@ -105,9 +108,11 @@ function UserCartItemsContent({ cartItem }) {
       </div>
       <div className="flex flex-col items-end">
         <p className="font-semibold">
-          $
+          ₹
           {(
+            // eslint-disable-next-line react/prop-types
             (cartItem?.salePrice > 0 ? cartItem?.salePrice : cartItem?.price) *
+            // eslint-disable-next-line react/prop-types
             cartItem?.quantity
           ).toFixed(2)}
         </p>
@@ -120,5 +125,15 @@ function UserCartItemsContent({ cartItem }) {
     </div>
   );
 }
+UserCartItemsContent.propTypes = {
+  cartItem: PropTypes.shape({
+    productId: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    quantity: PropTypes.number.isRequired,
+    salePrice: PropTypes.number,
+    price: PropTypes.number,
+  }).isRequired,
+};
 
 export default UserCartItemsContent;

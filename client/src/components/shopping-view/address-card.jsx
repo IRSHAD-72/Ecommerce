@@ -3,7 +3,9 @@ import { Card, CardContent, CardFooter } from "../ui/card";
 import { Label } from "../ui/label";
 
 function AddressCard({
+  // eslint-disable-next-line react/prop-types
   addressInfo,
+  // eslint-disable-next-line react/prop-types
   handleDeleteAddress,
   handleEditAddress,
   setCurrentSelectedAddress,
@@ -36,5 +38,15 @@ function AddressCard({
     </Card>
   );
 }
+
+import PropTypes from "prop-types";
+
+AddressCard.propTypes = {
+  addressInfo: PropTypes.object,
+  handleDeleteAddress: PropTypes.func,
+  handleEditAddress: PropTypes.func,
+  setCurrentSelectedAddress: PropTypes.func,
+  selectedId: PropTypes.object,
+};
 
 export default AddressCard;

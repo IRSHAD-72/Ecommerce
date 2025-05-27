@@ -5,12 +5,12 @@ import { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import axios from "axios";
 import { Skeleton } from "../ui/skeleton";
+import PropTypes from "prop-types";
 
 function ProductImageUpload({
   imageFile,
   setImageFile,
   imageLoadingState,
-  uploadedImageUrl,
   setUploadedImageUrl,
   setImageLoadingState,
   isEditMode,
@@ -118,5 +118,20 @@ function ProductImageUpload({
     </div>
   );
 }
+ProductImageUpload.propTypes = {
+  imageFile: PropTypes.oneOfType([
+    PropTypes.instanceOf(File),
+    PropTypes.object, // fallback for environments where File may not be defined
+    PropTypes.string, // in case imageFile is a string (URL) in some cases
+  ]),
+  setImageFile: PropTypes.func.isRequired,
+  imageLoadingState: PropTypes.bool.isRequired,
+  uploadedImageUrl: PropTypes.string,
+  setUploadedImageUrl: PropTypes.func.isRequired,
+  setImageLoadingState: PropTypes.func.isRequired,
+  isEditMode: PropTypes.bool.isRequired,
+  isCustomStyling: PropTypes.bool,
+};
 
 export default ProductImageUpload;
+
