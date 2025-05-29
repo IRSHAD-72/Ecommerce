@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
+const  cloudinary = require("cloudinary")
 
 //register
 const registerUser = async (req, res) => {
@@ -117,4 +118,29 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = { registerUser, loginUser, logoutUser, authMiddleware };
+// get user details
+const getUserDetails = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const user = await User.findById(userId).select("-password");
+    if (!user)
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  }
+  catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Some error occurred",
+    });
+  }
+}
+
+module.exports = { registerUser, loginUser, logoutUser, authMiddleware, getUserDetails };

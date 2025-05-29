@@ -94,7 +94,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
 
   useEffect(() => {
     if (productDetails !== null) dispatch(getReviews(productDetails?._id));
-  }, [productDetails]);
+  }, [productDetails, dispatch]);
 
   console.log(reviews, "reviews");
 

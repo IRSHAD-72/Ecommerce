@@ -2,6 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+// eslint-disable-next-line react/prop-types
 const Table = React.forwardRef(({ className, ...props }, ref) => (
   <div className="relative w-full overflow-auto">
     <table
@@ -12,11 +13,13 @@ const Table = React.forwardRef(({ className, ...props }, ref) => (
 ))
 Table.displayName = "Table"
 
+// eslint-disable-next-line react/prop-types
 const TableHeader = React.forwardRef(({ className, ...props }, ref) => (
   <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
 ))
 TableHeader.displayName = "TableHeader"
 
+// eslint-disable-next-line react/prop-types
 const TableBody = React.forwardRef(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
@@ -25,6 +28,7 @@ const TableBody = React.forwardRef(({ className, ...props }, ref) => (
 ))
 TableBody.displayName = "TableBody"
 
+// eslint-disable-next-line react/prop-types
 const TableFooter = React.forwardRef(({ className, ...props }, ref) => (
   <tfoot
     ref={ref}
@@ -33,6 +37,7 @@ const TableFooter = React.forwardRef(({ className, ...props }, ref) => (
 ))
 TableFooter.displayName = "TableFooter"
 
+// eslint-disable-next-line react/prop-types
 const TableRow = React.forwardRef(({ className, ...props }, ref) => (
   <tr
     ref={ref}
@@ -44,6 +49,7 @@ const TableRow = React.forwardRef(({ className, ...props }, ref) => (
 ))
 TableRow.displayName = "TableRow"
 
+// eslint-disable-next-line react/prop-types
 const TableHead = React.forwardRef(({ className, ...props }, ref) => (
   <th
     ref={ref}
@@ -55,6 +61,7 @@ const TableHead = React.forwardRef(({ className, ...props }, ref) => (
 ))
 TableHead.displayName = "TableHead"
 
+// eslint-disable-next-line react/prop-types
 const TableCell = React.forwardRef(({ className, ...props }, ref) => (
   <td
     ref={ref}
@@ -63,6 +70,7 @@ const TableCell = React.forwardRef(({ className, ...props }, ref) => (
 ))
 TableCell.displayName = "TableCell"
 
+// eslint-disable-next-line react/prop-types
 const TableCaption = React.forwardRef(({ className, ...props }, ref) => (
   <caption
     ref={ref}

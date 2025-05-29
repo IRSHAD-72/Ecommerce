@@ -110,9 +110,7 @@ function UserCartItemsContent({ cartItem }) {
         <p className="font-semibold">
           ₹
           {(
-            // eslint-disable-next-line react/prop-types
             (cartItem?.salePrice > 0 ? cartItem?.salePrice : cartItem?.price) *
-            // eslint-disable-next-line react/prop-types
             cartItem?.quantity
           ).toFixed(2)}
         </p>
